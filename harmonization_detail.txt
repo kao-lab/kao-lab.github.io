@@ -26,12 +26,13 @@ Race       SNOMED        103579009    Race                ACCORD_KEY          ra
     Export Mapping: map_concept_id  (SNOMED, 414408004) Hispanic --> 4
     Export Mapping: map_concept_id  (SNOMED, 413491005) American Indian race --> 5
     Export Mapping: map_concept_id  (SNOMED, 413582008) Asian race --> 6
+    Export Mapping: map_concept_id  (SNOMED, 415226007) Race not stated --> 8
 
 Race2      UCD.Kao       UCD-Kao-64   Race 2 class        *derived*           *derived*        *derived*   *derived*           *derived*        *derived*   DOX_VSC             race2            map_number  BARI2D_BL           race             map_number  
                                                                                                                                                             (just defaults)                                  (just defaults)                                  
-                                                                                                                                                            1.0-->(UCD.Kao,UCD-Kao-65) Race Non-African Ame  1.0-->(SNOMED,415226007) Race not stated         
+                                                                                                                                                            1.0-->(UCD.Kao,UCD-Kao-65) Race Non-African Ame  1.0-->(UCD.Kao,UCD-Kao-65) Race Non-African Ame  
                                                                                                                                                             2.0-->(SNOMED,15086000) African American         2.0-->(SNOMED,15086000) African American         
-    Export Mapping: map_concept_id  (SNOMED, 415226007) Race not stated --> 1
+    Export Mapping: map_concept_id  (UCD.Kao, UCD-Kao-65) Race Non-African American --> 1
     Export Mapping: map_concept_id  (SNOMED, 15086000) African American --> 2
 
 BMI        LOINC         39156-5      Body mass index     *derived*           *derived*        *derived*   PATIENT             bmi              identity    DOX_VSC             blbmi            identity    BARI2D_BL           bmi              identity    
@@ -48,10 +49,10 @@ height     LOINC         8302-2       Body height         F07_BASELINEHISTORY ht
                                                                                                                                                             factor 2.54 shift:0.0                                                                             
     Export Mapping: identity_number
 
-Toba       LOINC         39240-7      Tobacco use status  F07_BASELINEHISTORY cigarett         map_number  *derived*           *derived*        *derived*   DOX_VSC             cursmoke         map_number  BARI2D_BL           smkcat           map_number  
-                                                          (just defaults)                                                                                   (just defaults)                                  (just defaults)                                  
-                                                          1.0-->(SNOMED,373066001) Yes                                                                      1.0-->(SNOMED,373066001) Yes                     0.0-->(SNOMED,373067005) No                      
-                                                          2.0-->(SNOMED,373067005) No                                                                       2.0-->(SNOMED,373067005) No                      1.0-->(SNOMED,373066001) Yes                     
+Toba       LOINC         39240-7      Tobacco use status  F07_BASELINEHISTORY cigarett         map_number  *derived*           *derived*        *derived*   *derived*           *derived*        *derived*   BARI2D_BL           smkcat           map_number  
+                                                          (just defaults)                                                                                                                                    (just defaults)                                  
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                       0.0-->(SNOMED,373067005) No                      
+                                                          2.0-->(SNOMED,373067005) No                                                                                                                        1.0-->(SNOMED,373066001) Yes                     
     Export Mapping: map_concept_id  (SNOMED, 373067005) No --> 0
     Export Mapping: map_concept_id  (SNOMED, 373066001) Yes --> 1
 
@@ -122,8 +123,10 @@ asprin     ATC           B01AC06      acetylsalicylic aci CONCOMITANTMEDS     as
     Export Mapping: map_concept_id  (SNOMED, 373067005) No --> 0
     Export Mapping: map_concept_id  (SNOMED, 373066001) Yes --> 1
 
-antihyp    SNOMED        308116003    Antihypertensive th *derived*           *derived*        *derived*   *derived*           *derived*        *derived*   DOX_VSC             blmeds2          identity    *derived*           *derived*        *derived*   
+antihyp    SNOMED        308116003    Antihypertensive th *derived*           *derived*        *derived*   *derived*           *derived*        *derived*   DOX_VSC             blmeds2          map_number  *derived*           *derived*        *derived*   
                                                                                                                                                             (just defaults)                                                                                   
+                                                                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      
+                                                                                                                                                            2.0-->(SNOMED,373067005) No                                                                       
     Export Mapping: map_concept_id  (SNOMED, 373067005) No --> 0
     Export Mapping: map_concept_id  (SNOMED, 373066001) Yes --> 1
 
@@ -197,7 +200,7 @@ Dihy       SNOMED        406769001    Dihydropyridine der CONCOMITANTMEDS     dh
     Export Mapping: map_concept_id  (SNOMED, 373067005) No --> 0
     Export Mapping: map_concept_id  (SNOMED, 373066001) Yes --> 1
 
-nonDihy    UCD.Kao       UCD-Kao-35   ACCORD non-dhp Ca C CONCOMITANTMEDS     nondhp_ccb       map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+nonDihy    UCD.Kao       UCD-Kao-35   ACCORD CaCB         CONCOMITANTMEDS     nondhp_ccb       map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
                                                            visit=BLR                                                                                                                                                                                          
                                                           0.0-->(SNOMED,373067005) No                                                                                                                                                                         
                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
@@ -281,8 +284,8 @@ dthDays    UCD.Kao       UCD-Kao-26   Death Days          CVDOUTCOMES_201604  fu
 
 dthStat    UCD.Kao       UCD-Kao-27   Death Status        CVDOUTCOMES_201604  censor_tm        map_number  DEATH               dth_date         not_null    DOX_VSC             death            map_number  BARI2D_ENDPTS       death            map_number  
                                                           (just defaults)                                  (just defaults)                                  (just defaults)                                  (just defaults)                                  
-                                                          0.0-->(SNOMED,373066001) Yes                                                                      1.0-->(SNOMED,373066001) Yes                     0.0-->(SNOMED,373067005) No                      
-                                                          1.0-->(SNOMED,373067005) No                                                                       2.0-->(SNOMED,373067005) No                      1.0-->(SNOMED,373066001) Yes                     
+                                                          0.0-->(SNOMED,373067005) No                                                                       1.0-->(SNOMED,373066001) Yes                     0.0-->(SNOMED,373067005) No                      
+                                                          1.0-->(SNOMED,373066001) Yes                                                                      2.0-->(SNOMED,373067005) No                      1.0-->(SNOMED,373066001) Yes                     
     Export Mapping: map_concept_id  (SNOMED, 373067005) No --> 0
     Export Mapping: map_concept_id  (SNOMED, 373066001) Yes --> 1
 
@@ -308,7 +311,49 @@ CaCB       SNOMED        373304005    Calcium channel blo *derived*           *d
     Export Mapping: map_concept_id  (SNOMED, 373067005) No --> 0
     Export Mapping: map_concept_id  (SNOMED, 373066001) Yes --> 1
 
+n/a        LOINC         8867-4       Heart rate          BLOODPRESSURE_20160 hr               identity    NA                  NA               NA          NA                  NA               NA          BARI2D_BL           pulse60_sit      identity    
+                                                           visit=BLR                                                                                                                                         (just defaults)                                  
+n/a        SNOMED        468638005    Dietary cholesterol CONCOMITANTMEDS     cholest_abi      map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
+n/a        SNOMED        442407001    Estimation of creat NA                  NA               NA          NA                  NA               NA          DOX_VSC             blgfr            identity    NA                  NA               NA          
+                                                                                                                                                            (just defaults)                                                                                   
+n/a        SNOMED        226359003    Fish oil            NA                  NA               NA          CONMED              cm_fishoil       map_number  NA                  NA               NA          NA                  NA               NA          
+                                                                                                            visit=Baseline                                                                                                                                    
+                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
+                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
+n/a        ATC           A10BA        Biguanides          CONCOMITANTMEDS     biguanide        map_number  NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         biguanide        map_number  
+                                                           visit=BLR                                                                                                                                          fuper=-1                                        
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                        0.0-->(SNOMED,373067005) No                      
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                       1.0-->(SNOMED,373066001) Yes                     
+n/a        SNOMED        49436004     Atrial fibrillation NA                  NA               NA          HX                  hx_afib          map_number  NA                  NA               NA          NA                  NA               NA          
+                                                                                                           (just defaults)                                                                                                                                    
+                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
+                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
+n/a        UCD.Kao       UCD-Kao-37   CORONA 4-value Toba NA                  NA               NA          CONMED              cm_otdiab        map_number  NA                  NA               NA          NA                  NA               NA          
+                                                                                                            visit=Baseline                                                                                                                                    
+                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
+                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
+n/a        ATC           A10AC01      insulin (human)     CONCOMITANTMEDS     reg_insulin      map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
+n/a        ATC           A10BF        Alpha glucosidase i CONCOMITANTMEDS     ag_inhibitor     map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
 n/a        ATC           B01          ANTITHROMBOTIC AGEN CONCOMITANTMEDS     anti_coag        map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
+n/a        UCD.Kao       UCD-Kao-68   Member of ALLHAT DO NA                  NA               NA          NA                  NA               NA          DOX_VSC             llt              map_number  NA                  NA               NA          
+                                                                                                                                                            (just defaults)                                                                                   
+                                                                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      
+                                                                                                                                                            2.0-->(SNOMED,373067005) No                                                                       
+n/a        UCD.Kao       UCD-Kao-40   2nd DBP             BLOODPRESSURE_20160 dbp              identity    PE                  pe_bpdia         identity    DOX_VSC             dbp6m12          identity    BARI2D_LONG         dbp_sit          identity    
+                                                           visit=F12                                        visit=12 Month Visit                            (just defaults)                                   fuper=5                                         
+n/a        ATC           A10BB        Sulfonylureas       CONCOMITANTMEDS     sulfonylurea     map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
                                                            visit=BLR                                                                                                                                                                                          
                                                           0.0-->(SNOMED,373067005) No                                                                                                                                                                         
                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
@@ -316,23 +361,43 @@ n/a        SNOMED        266995000    H/O: cardiovascular F01_INCLUSIONEXCLUS cv
                                                           (just defaults)                                  (just defaults)                                                                                                                                    
                                                           1.0-->(SNOMED,373066001) Yes                     0.0-->(SNOMED,373067005) No                                                                                                                        
                                                           2.0-->(SNOMED,373067005) No                      1.0-->(SNOMED,373066001) Yes                                                                                                                       
+n/a        UCD.Kao       UCD-Kao-33   CV Hospital days    CONCOMITANTMEDS     other_diabmed    map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
+n/a        UCD.Kao       UCD-Kao-36   CV Death or non-fat CONCOMITANTMEDS     other_lipidmed   map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
 n/a        NDFRT         N0000182116  Fibric Acids        NA                  NA               NA          CONMED              cm_fibric        map_number  NA                  NA               NA          NA                  NA               NA          
                                                                                                             visit=Baseline                                                                                                                                    
                                                                                                            0.0-->(SNOMED,373067005) No                                                                                                                        
                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        UCD.Kao       UCD-Kao-31   All-cause Hospital  CONCOMITANTMEDS     othbol_insulin   map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        SNOMED        419204001    Sulfaurea           NA                  NA               NA          CONMED              cm_sulu          map_number  NA                  NA               NA          NA                  NA               NA          
+n/a        ATC           A10BA02      metformin           NA                  NA               NA          CONMED              cm_metformin     map_number  NA                  NA               NA          NA                  NA               NA          
                                                                                                             visit=Baseline                                                                                                                                    
                                                                                                            0.0-->(SNOMED,373067005) No                                                                                                                        
                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        SNOMED        226359003    Fish oil            NA                  NA               NA          CONMED              cm_fishoil       map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                            visit=Baseline                                                                                                                                    
+n/a        UCD.Kao       UCD-Kao-67   Member of ALLHAT LL NA                  NA               NA          NA                  NA               NA          LLT_VSC             lrzgrp           map_number  NA                  NA               NA          
+                                                                                                                                                            (just defaults)                                                                                   
+                                                                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      
+                                                                                                                                                            2.0-->(SNOMED,373067005) No                                                                       
+n/a        SNOMED        194828000    Angina pectoris     F01_INCLUSIONEXCLUS x2angina         map_number  HX                  hx_angina        map_number  NA                  NA               NA          NA                  NA               NA          
+                                                          (just defaults)                                  (just defaults)                                                                                                                                    
+                                                          1.0-->(SNOMED,373066001) Yes                     0.0-->(SNOMED,373067005) No                                                                                                                        
+                                                          2.0-->(SNOMED,373067005) No                      1.0-->(SNOMED,373066001) Yes                                                                                                                       
+n/a        SNOMED        219006       Current drinker     NA                  NA               NA          DEMO                demo_alcohol     map_number  NA                  NA               NA          NA                  NA               NA          
+                                                                                                           (just defaults)                                                                                                                                    
                                                                                                            0.0-->(SNOMED,373067005) No                                                                                                                        
                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        ATC           A10BH        Dipeptidyl peptidas NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         dpp              map_number  
+n/a        LOINC         10230-1      Cardiac ejection fr NA                  NA               NA          HX                  hx_ef            identity    NA                  NA               NA          NA                  NA               NA          
+                                                                                                           (just defaults)                                                                                                                                    
+n/a        LOINC         2160-0       Creatinine serum/pl NA                  NA               NA          LAB                 crcl             identity    NA                  NA               NA          NA                  NA               NA          
+                                                                                                           has date:visit visit=0                                                                                                                             
+n/a        UCD.Kao       UCD-Kao-30   All-cause Hospital  *derived*           *derived*        *derived*   *derived*           *derived*        *derived*   DOX_VSC             rzgroup          map_number  *derived*           *derived*        *derived*   
+                                                                                                                                                            (just defaults)                                                                                   
+                                                                                                                                                            1.0-->(SNOMED,37366001)                                                                           
+                                                                                                                                                            2.0-->(SNOMED,37367005)                                                                           
+n/a        NDFRT         N0000175583  Omega-3 Fatty Acid  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         omega            map_number  
                                                                                                                                                                                                               fuper=-1                                        
                                                                                                                                                                                                              0.0-->(SNOMED,373067005) No                      
                                                                                                                                                                                                              1.0-->(SNOMED,373066001) Yes                     
@@ -340,15 +405,61 @@ n/a        ATC           A10AB01      insulin (human)     CONCOMITANTMEDS     la
                                                            visit=BLR                                                                                                                                                                                          
                                                           0.0-->(SNOMED,373067005) No                                                                                                                                                                         
                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        UCD.Kao       UCD-Kao-30   All-cause Hospital  *derived*           *derived*        *derived*   *derived*           *derived*        *derived*   DOX_VSC             rzgroup          map_number  *derived*           *derived*        *derived*   
-                                                                                                                                                            (just defaults)                                                                                   
-                                                                                                                                                            1.0-->(SNOMED,37366001)                                                                           
-                                                                                                                                                            2.0-->(SNOMED,37367005)                                                                           
+n/a        SNOMED        167094009    Plasma glucose leve NA                  NA               NA          PATIENT             glucose_base     identity    NA                  NA               NA          NA                  NA               NA          
+                                                                                                           (just defaults)                                                                                                                                    
+n/a        SNOMED        419204001    Sulfaurea           NA                  NA               NA          CONMED              cm_sulu          map_number  NA                  NA               NA          NA                  NA               NA          
+                                                                                                            visit=Baseline                                                                                                                                    
+                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
+                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
 n/a        ATC           B01AB        Heparin group       CONCOMITANTMEDS     platelet_agi     map_number  CONMED              cm_plavix        map_number  NA                  NA               NA          BARI2D_LONG         apa              map_number  
                                                            visit=BLR                                        visit=Baseline                                                                                    fuper=-1                                        
                                                           0.0-->(SNOMED,373067005) No                      0.0-->(SNOMED,373067005) No                                                                       0.0-->(SNOMED,373067005) No                      
                                                           1.0-->(SNOMED,373066001) Yes                     1.0-->(SNOMED,373066001) Yes                                                                      1.0-->(SNOMED,373066001) Yes                     
+n/a        LOINC         76625-3      Alanine aminotransf OTHERLABS_201604    alt              identity    NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+n/a        UCD.Kao       UCD-Kao-69   AIM-HIGH 4-value To NA                  NA               NA          PATIENT             smoke            map_number  DOX_VSC             cursmoke         map_number  NA                  NA               NA          
+                                                                                                           (just defaults)                                  (just defaults)                                                                                   
+                                                                                                           1.0-->(LOINC,LA18978-9) Never smoker             1.0-->(LOINC,LA18978-9) Never smoker                                                              
+                                                                                                           2.0-->(LOINC,64234-8) Current smoker             2.0-->(LOINC,64234-8) Current smoker                                                              
+                                                                                                           3.0-->(SNOMED,713914004) User of smokeless to    3.0-->(SNOMED,713914004) User of smokeless to                                                     
+                                                                                                           4.0-->(LOINC,LA15920-4) Former smoker            4.0-->(LOINC,LA15920-4) Former smoker                                                             
+n/a        SNOMED        414408004    Hispanic            NA                  NA               NA          NA                  NA               NA          DOX_VSC             hispanic         map_number  NA                  NA               NA          
+                                                                                                                                                            (just defaults)                                                                                   
+                                                                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      
+                                                                                                                                                            2.0-->(SNOMED,373067005) No                                                                       
+n/a        LOINC         45670-7      Emphysema or COPD [ NA                  NA               NA          HX                  hx_cpd           map_number  NA                  NA               NA          NA                  NA               NA          
+                                                                                                           (just defaults)                                                                                                                                    
+                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
+                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
+n/a        SNOMED        109075003    Meglitinide         CONCOMITANTMEDS     meglitinide      map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
+n/a        ATC           A10BH        Dipeptidyl peptidas NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         dpp              map_number  
+                                                                                                                                                                                                              fuper=-1                                        
+                                                                                                                                                                                                             0.0-->(SNOMED,373067005) No                      
+                                                                                                                                                                                                             1.0-->(SNOMED,373066001) Yes                     
+n/a        SNOMED        167096006    Plasma fasting gluc OTHERLABS_201604    fpg              identity    NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+n/a        ATC           C10AB        Fibrates            CONCOMITANTMEDS     fibrate          map_number  NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         fibr             map_number  
+                                                           visit=BLR                                                                                                                                          fuper=-1                                        
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                        0.0-->(SNOMED,373067005) No                      
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                       1.0-->(SNOMED,373066001) Yes                     
+n/a        UCD.Kao       UCD-Kao-31   All-cause Hospital  CONCOMITANTMEDS     othbol_insulin   map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
+n/a        UCD.Kao       UCD-Kao-32   CV Hospital status  CONCOMITANTMEDS     premix_insulin   map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                                                                                                                                                                          
+                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
+                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
+n/a        SNOMED        80274001     Glomerular filtrati OTHERLABS_201604    gfr              identity    LAB                 egfr             identity    NA                  NA               NA          NA                  NA               NA          
+                                                           visit=BLR                                       has date:visit visit=0                                                                                                                             
 n/a        SNOMED        417736001    Amylin              NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         amylin           map_number  
+                                                                                                                                                                                                              fuper=-1                                        
+                                                                                                                                                                                                             0.0-->(SNOMED,373067005) No                      
+                                                                                                                                                                                                             1.0-->(SNOMED,373066001) Yes                     
+n/a        SNOMED        34012005     Sulfonylurea        NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         sulf             map_number  
                                                                                                                                                                                                               fuper=-1                                        
                                                                                                                                                                                                              0.0-->(SNOMED,373067005) No                      
                                                                                                                                                                                                              1.0-->(SNOMED,373066001) Yes                     
@@ -356,134 +467,26 @@ n/a        SNOMED        417524005    Incretin            NA                  NA
                                                                                                                                                                                                               fuper=-1                                        
                                                                                                                                                                                                              0.0-->(SNOMED,373067005) No                      
                                                                                                                                                                                                              1.0-->(SNOMED,373066001) Yes                     
-n/a        UCD.Kao       UCD-Kao-36   CV Death or non-fat CONCOMITANTMEDS     other_lipidmed   map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        ATC           B01AA03      warfarin            NA                  NA               NA          CONMED              cm_warfarin      map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                            visit=Baseline                                                                                                                                    
-                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
-                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        UCD.Kao       UCD-Kao-37   CORONA 4-value Toba NA                  NA               NA          CONMED              cm_otdiab        map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                            visit=Baseline                                                                                                                                    
-                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
-                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        LOINC         2160-0       Creatinine serum/pl NA                  NA               NA          LAB                 crcl             identity    NA                  NA               NA          NA                  NA               NA          
-                                                                                                           has date:visit visit=0                                                                                                                             
-n/a        UCD.Kao       UCD-Kao-33   CV Hospital days    CONCOMITANTMEDS     other_diabmed    map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        UCD.Kao       UCD-Kao-40   2nd DBP             BLOODPRESSURE_20160 dbp              identity    PE                  pe_bpdia         identity    DOX_VSC             dbp6m12          identity    BARI2D_LONG         dbp_sit          identity    
-                                                           visit=F12                                        visit=12 Month Visit                            (just defaults)                                   fuper=5                                         
-n/a        UCD.Kao       UCD-Kao-32   CV Hospital status  CONCOMITANTMEDS     premix_insulin   map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        SNOMED        414408004    Hispanic            NA                  NA               NA          NA                  NA               NA          DOX_VSC             hispanic         map_number  NA                  NA               NA          
-                                                                                                                                                            (just defaults)                                                                                   
-                                                                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      
-                                                                                                                                                            2.0-->(SNOMED,373067005) No                                                                       
 n/a        SNOMED        313835008    HbA1c measurement   F01_INCLUSIONEXCLUS x2qhba1c         identity    NA                  NA               NA          NA                  NA               NA          BARI2D_BL           hba1c            identity    
                                                           (just defaults)                                                                                                                                    (just defaults)                                  
-n/a        LOINC         8867-4       Heart rate          BLOODPRESSURE_20160 hr               identity    NA                  NA               NA          NA                  NA               NA          BARI2D_BL           pulse60_sit      identity    
-                                                           visit=BLR                                                                                                                                         (just defaults)                                  
-n/a        UCD.Kao       UCD-Kao-67   Member of ALLHAT LL NA                  NA               NA          NA                  NA               NA          LLT_VSC             lrzgrp           map_number  NA                  NA               NA          
-                                                                                                                                                            (just defaults)                                                                                   
-                                                                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      
-                                                                                                                                                            2.0-->(SNOMED,373067005) No                                                                       
-n/a        ATC           A10BB        Sulfonylureas       CONCOMITANTMEDS     sulfonylurea     map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        SNOMED        194828000    Angina pectoris     F01_INCLUSIONEXCLUS x2angina         map_number  HX                  hx_angina        map_number  NA                  NA               NA          NA                  NA               NA          
-                                                          (just defaults)                                  (just defaults)                                                                                                                                    
-                                                          1.0-->(SNOMED,373066001) Yes                     0.0-->(SNOMED,373067005) No                                                                                                                        
-                                                          2.0-->(SNOMED,373067005) No                      1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        ATC           A10BA        Biguanides          CONCOMITANTMEDS     biguanide        map_number  NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         biguanide        map_number  
-                                                           visit=BLR                                                                                                                                          fuper=-1                                        
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                        0.0-->(SNOMED,373067005) No                      
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                       1.0-->(SNOMED,373066001) Yes                     
-n/a        SNOMED        34012005     Sulfonylurea        NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         sulf             map_number  
-                                                                                                                                                                                                              fuper=-1                                        
-                                                                                                                                                                                                             0.0-->(SNOMED,373067005) No                      
-                                                                                                                                                                                                             1.0-->(SNOMED,373066001) Yes                     
-n/a        UCD.Kao       UCD-Kao-41   2nd SBP             BLOODPRESSURE_20160 sbp              identity    PE                  pe_bpsys         identity    DOX_VSC             sbp6m12          identity    BARI2D_LONG         sbp_sit          identity    
-                                                           visit=F12                                        visit=12 Month Visit                            (just defaults)                                   fuper=5                                         
-n/a        ATC           A10BA02      metformin           NA                  NA               NA          CONMED              cm_metformin     map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                            visit=Baseline                                                                                                                                    
-                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
-                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        ATC           A10BF        Alpha glucosidase i CONCOMITANTMEDS     ag_inhibitor     map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        LOINC         76625-3      Alanine aminotransf OTHERLABS_201604    alt              identity    NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-n/a        ATC           A10AE01      insulin (human)     CONCOMITANTMEDS     nphl_insulin     map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        NDFRT         N0000175583  Omega-3 Fatty Acid  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         omega            map_number  
-                                                                                                                                                                                                              fuper=-1                                        
-                                                                                                                                                                                                             0.0-->(SNOMED,373067005) No                      
-                                                                                                                                                                                                             1.0-->(SNOMED,373066001) Yes                     
-n/a        ATC           A10AC01      insulin (human)     CONCOMITANTMEDS     reg_insulin      map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        UCD.Kao       UCD-Kao-69   AIM-HIGH 4-value To NA                  NA               NA          PATIENT             smoke            map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                           (just defaults)                                                                                                                                    
-                                                                                                           1.0-->(LOINC,LA18978-9) Never smoker                                                                                                               
-                                                                                                           2.0-->(LOINC,64234-8) Current smoker                                                                                                               
-                                                                                                           3.0-->(SNOMED,713914004) User of smokeless to                                                                                                      
-                                                                                                           4.0-->(LOINC,LA15920-4) Former smoker                                                                                                              
-n/a        SNOMED        49436004     Atrial fibrillation NA                  NA               NA          HX                  hx_afib          map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                           (just defaults)                                                                                                                                    
-                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
-                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        SNOMED        167094009    Plasma glucose leve NA                  NA               NA          PATIENT             glucose_base     identity    NA                  NA               NA          NA                  NA               NA          
-                                                                                                           (just defaults)                                                                                                                                    
-n/a        SNOMED        109075003    Meglitinide         CONCOMITANTMEDS     meglitinide      map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                                                                         
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
 n/a        ATC           A10A         INSULINS AND ANALOG *derived*           *derived*        *derived*   CONMED              cm_insulin       map_number  NA                  NA               NA          BARI2D_LONG         insulin          map_number  
                                                                                                             visit=Baseline                                                                                    fuper=-1                                        
                                                                                                            0.0-->(SNOMED,373067005) No                                                                       0.0-->(SNOMED,373067005) No                      
                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      1.0-->(SNOMED,373066001) Yes                     
+n/a        ATC           B01AA03      warfarin            NA                  NA               NA          CONMED              cm_warfarin      map_number  NA                  NA               NA          NA                  NA               NA          
+                                                                                                            visit=Baseline                                                                                                                                    
+                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
+                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
 n/a        SNOMED        55013001     Niacin              CONCOMITANTMEDS     niacin           map_number  CONMED              cm_niacin        map_number  NA                  NA               NA          BARI2D_LONG         niac             map_number  
                                                            visit=BLR                                        visit=Baseline                                                                                    fuper=-1                                        
                                                           0.0-->(SNOMED,373067005) No                      0.0-->(SNOMED,373067005) No                                                                       0.0-->(SNOMED,373067005) No                      
                                                           1.0-->(SNOMED,373066001) Yes                     1.0-->(SNOMED,373066001) Yes                                                                      1.0-->(SNOMED,373066001) Yes                     
-n/a        LOINC         45670-7      Emphysema or COPD [ NA                  NA               NA          HX                  hx_cpd           map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                           (just defaults)                                                                                                                                    
-                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
-                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        SNOMED        468638005    Dietary cholesterol CONCOMITANTMEDS     cholest_abi      map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
+n/a        UCD.Kao       UCD-Kao-41   2nd SBP             BLOODPRESSURE_20160 sbp              identity    PE                  pe_bpsys         identity    DOX_VSC             sbp6m12          identity    BARI2D_LONG         sbp_sit          identity    
+                                                           visit=F12                                        visit=12 Month Visit                            (just defaults)                                   fuper=5                                         
+n/a        ATC           A10AE01      insulin (human)     CONCOMITANTMEDS     nphl_insulin     map_number  NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
                                                            visit=BLR                                                                                                                                                                                          
                                                           0.0-->(SNOMED,373067005) No                                                                                                                                                                         
                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                                                                        
-n/a        LOINC         10230-1      Cardiac ejection fr NA                  NA               NA          HX                  hx_ef            identity    NA                  NA               NA          NA                  NA               NA          
-                                                                                                           (just defaults)                                                                                                                                    
-n/a        SNOMED        219006       Current drinker     NA                  NA               NA          DEMO                demo_alcohol     map_number  NA                  NA               NA          NA                  NA               NA          
-                                                                                                           (just defaults)                                                                                                                                    
-                                                                                                           0.0-->(SNOMED,373067005) No                                                                                                                        
-                                                                                                           1.0-->(SNOMED,373066001) Yes                                                                                                                       
-n/a        SNOMED        80274001     Glomerular filtrati OTHERLABS_201604    gfr              identity    LAB                 egfr             identity    NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                       has date:visit visit=0                                                                                                                             
-n/a        ATC           C10AB        Fibrates            CONCOMITANTMEDS     fibrate          map_number  NA                  NA               NA          NA                  NA               NA          BARI2D_LONG         fibr             map_number  
-                                                           visit=BLR                                                                                                                                          fuper=-1                                        
-                                                          0.0-->(SNOMED,373067005) No                                                                                                                        0.0-->(SNOMED,373067005) No                      
-                                                          1.0-->(SNOMED,373066001) Yes                                                                                                                       1.0-->(SNOMED,373066001) Yes                     
-n/a        SNOMED        442407001    Estimation of creat NA                  NA               NA          NA                  NA               NA          DOX_VSC             blgfr            identity    NA                  NA               NA          
-                                                                                                                                                            (just defaults)                                                                                   
-n/a        UCD.Kao       UCD-Kao-68   Member of ALLHAT DO NA                  NA               NA          NA                  NA               NA          DOX_VSC             llt              map_number  NA                  NA               NA          
-                                                                                                                                                            (just defaults)                                                                                   
-                                                                                                                                                            1.0-->(SNOMED,373066001) Yes                                                                      
-                                                                                                                                                            2.0-->(SNOMED,373067005) No                                                                       
-n/a        SNOMED        167096006    Plasma fasting gluc OTHERLABS_201604    fpg              identity    NA                  NA               NA          NA                  NA               NA          NA                  NA               NA          
-                                                           visit=BLR                                                                                                                                                                                          
 
 Derived variables extract in this export configuration:
 
@@ -491,46 +494,45 @@ ACCORD 21
 =========
 "Race2"    (UCD.Kao, UCD-Kao-64) Race 2 class              func:map_concept_id      
     (SNOMED, 103579009)       Race                           "Race"               accord.ACCORD_KEY              raceclass       
+    (dual, 4211353)           Asian race                     (not extracted)      2000000065 value_as_concept_id
     (dual, 4035165)           African American               (not extracted)      4035165 value_as_concept_id
     (dual, 4188159)           Hispanic                       (not extracted)      2000000065 value_as_concept_id
-    (dual, 4190758)           Race not stated                (not extracted)      2000000065 value_as_concept_id
     (dual, 4211331)           American Indian race           (not extracted)      2000000065 value_as_concept_id
-    (dual, 4211353)           Asian race                     (not extracted)      2000000065 value_as_concept_id
+    (dual, 4185154)           Caucasian                      (not extracted)      2000000065 value_as_concept_id
+    (dual, 4190758)           Race not stated                (not extracted)      2000000065 value_as_concept_id
 "BMI"      (LOINC, 39156-5)      Body mass index           func:metric_bmi          
     (LOINC, 29463-7)          Body weight                    "weight"             accord.F07_BASELINEHISTORYPHYSICALEXAM wt_kg           
     (LOINC, 8302-2)           Body height                    "height"             accord.F07_BASELINEHISTORYPHYSICALEXAM ht_cm           
 "HxMIStr"  (UCD.Kao, UCD-Kao-63) MI Stroke                 func:concept_or_list     
-    (SNOMED, 22298006)        Myocardial infarction          "MI"                 accord.F01_INCLUSIONEXCLUSIONSUMMARY x2mi            
     (SNOMED, 230690007)       Cerebrovascular accident       "HxStr"              accord.F01_INCLUSIONEXCLUSIONSUMMARY x2stroke        
+    (SNOMED, 22298006)        Myocardial infarction          "MI"                 accord.F01_INCLUSIONEXCLUSIONSUMMARY x2mi            
 "revasc"   (SNOMED, 81266008)    Heart revascularization   func:concept_or_list     
     (SNOMED, 232717009)       Coronary artery bypass graft   "CABG"               accord.F01_INCLUSIONEXCLUSIONSUMMARY cabg            
     (SNOMED, 415070008)       Percutaneous coronary interve  "PCI"                accord.F01_INCLUSIONEXCLUSIONSUMMARY ptci            
 "antihyp"  (SNOMED, 308116003)   Antihypertensive therapy  func:concept_or_list     
-    (ATC, A10BG)              Thiazolidinediones             (not extracted)      None value_as_number
-    (ATC, A12B)               POTASSIUM                      "K"                  accord.CONCOMITANTMEDS         potassium       
-    (ATC, C01D)               VASODILATORS USED IN CARDIAC   "VASO"               accord.CONCOMITANTMEDS         vasodilator     
-    (ATC, C01DA)              Organic nitrates               "ONitra"             accord.CONCOMITANTMEDS         nitrate         
-    (ATC, C02AA02)            reserpine                      "rese"               accord.CONCOMITANTMEDS         reserpine       
-    (ATC, C03AA)              Thiazides, plain               "thiazide"           accord.CONCOMITANTMEDS         thiazide        
-    (ATC, C07)                BETA BLOCKING AGENTS           "BetaB"              accord.CONCOMITANTMEDS         beta_blocker    
     (ATC, C09A)               ACE INHIBITORS, PLAIN          "AceI"               accord.CONCOMITANTMEDS         acei            
-    (ATC, C09C)               ANGIOTENSIN II ANTAGONISTS, P  "ARB"                accord.CONCOMITANTMEDS         a2rb            
-    (NDFRT, N0000007647)      Nitrates                       (not extracted)      None value_as_number
-    (NDFRT, N0000175553)      alpha-Adrenergic Blocker       "AlphaB"             accord.CONCOMITANTMEDS         alpha_blocker   
-    (NDFRT, N0000175554)      Central alpha-2 Adrenergic Ag  "Cent"               accord.CONCOMITANTMEDS         central_agent   
-    (SNOMED, 109086001)       Thiazolidinedione              "TZD"                accord.CONCOMITANTMEDS         tzd             
-    (SNOMED, 29051009)        Loop diuretic                  "Loop"               accord.CONCOMITANTMEDS         loop            
     (SNOMED, 406769001)       Dihydropyridine derivative ca  "Dihy"               accord.CONCOMITANTMEDS         dhp_ccb         
-    (SNOMED, 47755009)        Potassium-sparing diuretic     "KDiur"              accord.CONCOMITANTMEDS         ksparing        
-    (UCD.Kao, UCD-Kao-35)     ACCORD non-dhp Ca CB           "nonDihy"            accord.CONCOMITANTMEDS         nondhp_ccb      
-    (UCD.Kao, UCD-Kao-62)     ACCORD Other BP med            "othBPmed"           accord.CONCOMITANTMEDS         other_bpmed     
-"DIUR"     (ATC, C03)            DIURETICS                 func:concept_or_list     
-    (ATC, C03AA)              Thiazides, plain               "thiazide"           accord.CONCOMITANTMEDS         thiazide        
+    (ATC, C07)                BETA BLOCKING AGENTS           "BetaB"              accord.CONCOMITANTMEDS         beta_blocker    
+    (NDFRT, N0000175554)      Central alpha-2 Adrenergic Ag  "Cent"               accord.CONCOMITANTMEDS         central_agent   
+    (NDFRT, N0000175553)      alpha-Adrenergic Blocker       "AlphaB"             accord.CONCOMITANTMEDS         alpha_blocker   
+    (UCD.Kao, UCD-Kao-35)     ACCORD CaCB                    "nonDihy"            accord.CONCOMITANTMEDS         nondhp_ccb      
+    (ATC, C09C)               ANGIOTENSIN II ANTAGONISTS, P  "ARB"                accord.CONCOMITANTMEDS         a2rb            
+    (ATC, A12B)               POTASSIUM                      "K"                  accord.CONCOMITANTMEDS         potassium       
     (SNOMED, 29051009)        Loop diuretic                  "Loop"               accord.CONCOMITANTMEDS         loop            
+    (ATC, C03AA)              Thiazides, plain               "thiazide"           accord.CONCOMITANTMEDS         thiazide        
+    (SNOMED, 47755009)        Potassium-sparing diuretic     "KDiur"              accord.CONCOMITANTMEDS         ksparing        
+    (ATC, C02AA02)            reserpine                      "rese"               accord.CONCOMITANTMEDS         reserpine       
+    (ATC, C01D)               VASODILATORS USED IN CARDIAC   "VASO"               accord.CONCOMITANTMEDS         vasodilator     
+    (UCD.Kao, UCD-Kao-62)     ACCORD Other BP med            "othBPmed"           accord.CONCOMITANTMEDS         other_bpmed     
+    (ATC, C01DA)              Organic nitrates               "ONitra"             accord.CONCOMITANTMEDS         nitrate         
+    (NDFRT, N0000007647)      Nitrates                       (not extracted)      None value_as_number
+"DIUR"     (ATC, C03)            DIURETICS                 func:concept_or_list     
+    (SNOMED, 29051009)        Loop diuretic                  "Loop"               accord.CONCOMITANTMEDS         loop            
+    (ATC, C03AA)              Thiazides, plain               "thiazide"           accord.CONCOMITANTMEDS         thiazide        
     (SNOMED, 47755009)        Potassium-sparing diuretic     "KDiur"              accord.CONCOMITANTMEDS         ksparing        
 "CaCB"     (SNOMED, 373304005)   Calcium channel blocker   func:concept_or_list     
     (SNOMED, 406769001)       Dihydropyridine derivative ca  "Dihy"               accord.CONCOMITANTMEDS         dhp_ccb         
-    (UCD.Kao, UCD-Kao-35)     ACCORD non-dhp Ca CB           "nonDihy"            accord.CONCOMITANTMEDS         nondhp_ccb      
+    (UCD.Kao, UCD-Kao-35)     ACCORD CaCB                    "nonDihy"            accord.CONCOMITANTMEDS         nondhp_ccb      
 
 name: ACCORD
 id field:   maskid
@@ -549,35 +551,34 @@ AIMHIGH 22
 ==========
 "Race2"    (UCD.Kao, UCD-Kao-64) Race 2 class              func:map_concept_id      
     (SNOMED, 103579009)       Race                           "Race"               aimhigh.PATIENT                race            
+    (dual, 4211353)           Asian race                     (not extracted)      2000000065 value_as_concept_id
     (dual, 4035165)           African American               (not extracted)      4035165 value_as_concept_id
     (dual, 4188159)           Hispanic                       (not extracted)      2000000065 value_as_concept_id
-    (dual, 4190758)           Race not stated                (not extracted)      2000000065 value_as_concept_id
     (dual, 4211331)           American Indian race           (not extracted)      2000000065 value_as_concept_id
-    (dual, 4211353)           Asian race                     (not extracted)      2000000065 value_as_concept_id
+    (dual, 4185154)           Caucasian                      (not extracted)      2000000065 value_as_concept_id
+    (dual, 4190758)           Race not stated                (not extracted)      2000000065 value_as_concept_id
 "Toba"     (LOINC, 39240-7)      Tobacco use status CPHS   func:map_concept_id      
-    (dual, 2000000069)        AIM-HIGH 4-value Tobacco Use   (not extracted)      source 4 smoke value_as_concept_id
-    (dual, 37017610)          User of smokeless tobacco      (not extracted)      4188539 value_as_concept_id
     (dual, 40766945)          Current smoker                 (not extracted)      4188539 value_as_concept_id
-    (dual, 45879404)          Never smoker                   (not extracted)      4188540 value_as_concept_id
+    (UCD.Kao, UCD-Kao-69)     AIM-HIGH 4-value Tobacco Use   (not extracted)      aimhigh.PATIENT                smoke           
     (dual, 45883458)          Former smoker                  (not extracted)      4188540 value_as_concept_id
+    (dual, 45879404)          Never smoker                   (not extracted)      4188540 value_as_concept_id
+    (dual, 37017610)          User of smokeless tobacco      (not extracted)      4188539 value_as_concept_id
 "HxMIStr"  (UCD.Kao, UCD-Kao-63) MI Stroke                 func:concept_or_list     
-    (SNOMED, 22298006)        Myocardial infarction          "MI"                 aimhigh.HX                     hx_mi           
     (SNOMED, 230690007)       Cerebrovascular accident       "HxStr"              aimhigh.HX                     hx_stroke       
+    (SNOMED, 22298006)        Myocardial infarction          "MI"                 aimhigh.HX                     hx_mi           
 "revasc"   (SNOMED, 81266008)    Heart revascularization   func:concept_or_list     
     (SNOMED, 232717009)       Coronary artery bypass graft   "CABG"               aimhigh.HX                     hx_cabg         
     (SNOMED, 415070008)       Percutaneous coronary interve  "PCI"                aimhigh.HX                     hx_pci          
 "HMG"      (ATC, C10AA)          HMG CoA reductase inhibitors func:true                
     (no args)
 "antihyp"  (SNOMED, 308116003)   Antihypertensive therapy  func:concept_or_list     
-    (ATC, A10BG)              Thiazolidinediones             (not extracted)      None value_as_number
-    (ATC, C01DA)              Organic nitrates               "ONitra"             aimhigh.CONMED                 cm_nit          
-    (ATC, C03)                DIURETICS                      "DIUR"               aimhigh.CONMED                 cm_diu          
-    (ATC, C07)                BETA BLOCKING AGENTS           "BetaB"              aimhigh.CONMED                 cm_beta         
     (ATC, C09A)               ACE INHIBITORS, PLAIN          "AceI"               aimhigh.CONMED                 cm_ace          
+    (ATC, C07)                BETA BLOCKING AGENTS           "BetaB"              aimhigh.CONMED                 cm_beta         
     (ATC, C09C)               ANGIOTENSIN II ANTAGONISTS, P  "ARB"                aimhigh.CONMED                 cm_atii         
-    (NDFRT, N0000007647)      Nitrates                       (not extracted)      None value_as_number
-    (SNOMED, 109086001)       Thiazolidinedione              "TZD"                aimhigh.CONMED                 cm_tzd          
+    (ATC, C03)                DIURETICS                      "DIUR"               aimhigh.CONMED                 cm_diu          
+    (ATC, C01DA)              Organic nitrates               "ONitra"             aimhigh.CONMED                 cm_nit          
     (SNOMED, 373304005)       Calcium channel blocker        "CaCB"               aimhigh.CONMED                 cm_ccb          
+    (NDFRT, N0000007647)      Nitrates                       (not extracted)      None value_as_number
 
 name: AIMHIGH
 id field:   patientkey
@@ -596,14 +597,20 @@ file:AIM-HIGH/SASData/Tabulations/DEATH.csv
 
 ALLHAT 23
 =========
+"Toba"     (LOINC, 39240-7)      Tobacco use status CPHS   func:map_concept_id      
+    (dual, 40766945)          Current smoker                 (not extracted)      4188539 value_as_concept_id
+    (UCD.Kao, UCD-Kao-69)     AIM-HIGH 4-value Tobacco Use   (not extracted)      allhat.DOX_VSC                 cursmoke        
+    (dual, 45883458)          Former smoker                  (not extracted)      4188540 value_as_concept_id
+    (dual, 45879404)          Never smoker                   (not extracted)      4188540 value_as_concept_id
+    (dual, 37017610)          User of smokeless tobacco      (not extracted)      4188539 value_as_concept_id
 "Htn"      (SNOMED, 38341003)    Hypertensive disorder     func:true                
     (no args)
 "revasc"   (SNOMED, 81266008)    Heart revascularization   func:concept_or_list     
     (SNOMED, 232717009)       Coronary artery bypass graft   "CABG"               allhat.DOX_VSC                 hxcabg          
     (SNOMED, 415070008)       Percutaneous coronary interve  "PCI"                None value_as_concept_id
 "HMG"      (ATC, C10AA)          HMG CoA reductase inhibitors func:concept_and_list    
-    (UCD.Kao, UCD-Kao-67)     Member of ALLHAT LLT tmt?      (not extracted)      allhat.LLT_VSC                 lrzgrp          
     (UCD.Kao, UCD-Kao-68)     Member of ALLHAT DOX tmt?      (not extracted)      allhat.DOX_VSC                 llt             
+    (UCD.Kao, UCD-Kao-67)     Member of ALLHAT LLT tmt?      (not extracted)      allhat.LLT_VSC                 lrzgrp          
 
 name: ALLHAT
 id field:   index
@@ -618,17 +625,15 @@ BARI2D 24
 "HxDM"     (SNOMED, 161445009)   H/O: diabetes mellitus    func:true                
     (no args)
 "HxMIStr"  (UCD.Kao, UCD-Kao-63) MI Stroke                 func:concept_or_list     
-    (SNOMED, 22298006)        Myocardial infarction          "MI"                 bari2d.BARI2D_BL               hxmi            
     (SNOMED, 230690007)       Cerebrovascular accident       "HxStr"              bari2d.BARI2D_BL               hxcva           
+    (SNOMED, 22298006)        Myocardial infarction          "MI"                 bari2d.BARI2D_BL               hxmi            
 "antihyp"  (SNOMED, 308116003)   Antihypertensive therapy  func:concept_or_list     
-    (ATC, A10BG)              Thiazolidinediones             (not extracted)      None value_as_number
-    (ATC, C03)                DIURETICS                      "DIUR"               bari2d.BARI2D_BL               diur            
-    (ATC, C07)                BETA BLOCKING AGENTS           "BetaB"              bari2d.BARI2D_BL               betab           
-    (ATC, C09A)               ACE INHIBITORS, PLAIN          "AceI"               bari2d.BARI2D_BL               acei            
-    (ATC, C09C)               ANGIOTENSIN II ANTAGONISTS, P  "ARB"                bari2d.BARI2D_BL               arb             
-    (SNOMED, 109086001)       Thiazolidinedione              "TZD"                bari2d.BARI2D_BL               tzd             
-    (SNOMED, 373304005)       Calcium channel blocker        "CaCB"               bari2d.BARI2D_BL               ccb             
     (UCD.Kao, UCD-Kao-61)     BARI-2D non sublingal nitrate  "nslNitrate"         bari2d.BARI2D_BL               nsgn            
+    (ATC, C09A)               ACE INHIBITORS, PLAIN          "AceI"               bari2d.BARI2D_BL               acei            
+    (ATC, C07)                BETA BLOCKING AGENTS           "BetaB"              bari2d.BARI2D_BL               betab           
+    (ATC, C09C)               ANGIOTENSIN II ANTAGONISTS, P  "ARB"                bari2d.BARI2D_BL               arb             
+    (ATC, C03)                DIURETICS                      "DIUR"               bari2d.BARI2D_BL               diur            
+    (SNOMED, 373304005)       Calcium channel blocker        "CaCB"               bari2d.BARI2D_BL               ccb             
 
 name: BARI2D
 id field:   id
